@@ -1,0 +1,517 @@
+{
+	"info": {
+		"_postman_id": "ce42e940-1d7f-40ca-989e-38730cb5899d",
+		"name": "Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30672875"
+	},
+	"item": [
+		{
+			"name": "Get all stores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/stores",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all stores",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/stores",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n  {\r\n    \"id\": 1,\r\n    \"name\": \"Store X\",\r\n    \"city\": \"City A\",\r\n    \"address\": \"123 Main St\",\r\n    \"products\": [\r\n      {\r\n        \"id\": 1,\r\n        \"name\": \"Product A\",\r\n        \"price\": 10.99,\r\n        \"type\": \"Perecedero\"\r\n      },\r\n      {\r\n        \"id\": 2,\r\n        \"name\": \"Product B\",\r\n        \"price\": 20.49,\r\n        \"type\": \"No perecedero\"\r\n      }\r\n    ]\r\n  },\r\n  {\r\n    \"id\": 2,\r\n    \"name\": \"Store Y\",\r\n    \"city\": \"City B\",\r\n    \"address\": \"456 Elm St\",\r\n    \"products\": []\r\n  }\r\n]\r\n"
+				}
+			]
+		},
+		{
+			"name": "Create a store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"New Store\",\r\n  \"city\": \"City C\",\r\n  \"address\": \"789 Oak St\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/stores",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create a new store",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"New Store\",\r\n  \"city\": \"City C\",\r\n  \"address\": \"789 Oak St\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/stores",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n  \"id\": 3,\r\n  \"name\": \"New Store\",\r\n  \"city\": \"City C\",\r\n  \"address\": \"789 Oak St\",\r\n  \"products\": []\r\n}\r\n"
+				}
+			]
+		},
+		{
+			"name": "Create an INVALID  new  store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"\",\r\n  \"price\": 25.99,\r\n  \"type\": \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/stores",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create a new store",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"\",\r\n  \"price\": 25.99,\r\n  \"type\": \"\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/stores",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n  \"statusCode\": 400,\r\n  \"message\": \"Invalid data\",\r\n  \"error\": \"Bad Request\"\r\n}\r\n"
+				}
+			]
+		},
+		{
+			"name": "Get a store",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/stores/{store_id}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"{store_id}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a store",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/stores/{store_id}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								"{store_id}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"id\": 1,\n  \"name\": \"Store X\",\n  \"city\": \"City A\",\n  \"address\": \"123 Main St\",\n  \"products\": [\n    {\n      \"id\": 1,\n      \"name\": \"Product A\",\n      \"price\": 10.99,\n      \"type\": \"Perecedero\"\n    }\n  ]\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Get an INVALID store",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/stores/999",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"999"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a store",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/stores/999",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								"999"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": 404,\n  \"message\": \"Store with ID 999 not found\",\n  \"error\": \"Not Found\"\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Edit a store",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Updated Store\",\r\n  \"city\": \"City D\",\r\n  \"address\": \"101 Pine St\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/stores/{store_id}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"{store_id}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Edit a store",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Updated Store\",\r\n  \"city\": \"City D\",\r\n  \"address\": \"101 Pine St\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/stores/{store_id}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								"{store_id}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"id\": 1,\n  \"name\": \"Updated Store\",\n  \"city\": \"City D\",\n  \"address\": \"101 Pine St\",\n  \"products\": [\n    {\n      \"id\": 2,\n      \"name\": \"Product B\",\n      \"price\": 20.49,\n      \"type\": \"No perecedero\"\n    }\n  ]\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Edit an INVALID  store",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Updated Product\",\r\n  \"price\": 30.99,\r\n  \"type\": \"No\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/stores/999",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"999"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Edit a store",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Updated Product\",\r\n  \"price\": 30.99,\r\n  \"type\": \"No\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/stores/999",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								"999"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": 400,\n  \"message\": \"Invalid data\",\n  \"error\": \"Bad Request\"\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Delete a store",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/stores/{store_id}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"{store_id}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a store",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/stores/{store_id}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								"{store_id}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"message\": \"Store with ID 1 deleted successfully\"\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Delete an INVALID store",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/stores/999",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"999"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a store",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/stores/999",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								"999"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": 404,\n  \"message\": \"Store with ID 999 not found\",\n  \"error\": \"Not Found\"\n}\n"
+				}
+			]
+		}
+	]
+}
