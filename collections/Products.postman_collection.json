@@ -1,0 +1,517 @@
+{
+	"info": {
+		"_postman_id": "ebc12afc-d64d-464d-98db-94d2ed53b0d3",
+		"name": "Products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30672875"
+	},
+	"item": [
+		{
+			"name": "Get all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all products",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n  {\r\n    \"id\": 1,\r\n    \"name\": \"Product A\",\r\n    \"price\": 19.99,\r\n    \"type\": \"Perecedero\",\r\n    \"stores\": [\r\n      {\r\n        \"id\": 1,\r\n        \"name\": \"Store X\",\r\n        \"city\": \"City A\",\r\n        \"address\": \"123 Main St\"\r\n      },\r\n      {\r\n        \"id\": 2,\r\n        \"name\": \"Store Y\",\r\n        \"city\": \"City B\",\r\n        \"address\": \"456 Elm St\"\r\n      }\r\n    ]\r\n  },\r\n  {\r\n    \"id\": 2,\r\n    \"name\": \"Product B\",\r\n    \"price\": 29.99,\r\n    \"type\": \"No perecedero\",\r\n    \"stores\": [\r\n      {\r\n        \"id\": 3,\r\n        \"name\": \"Store Z\",\r\n        \"city\": \"City C\",\r\n        \"address\": \"789 Oak St\"\r\n      }\r\n    ]\r\n  }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Create a prodcut",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"New Product\",\r\n  \"price\": 25.99,\r\n  \"type\": \"Perecedero\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/products",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create a new product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"New Product\",\r\n  \"price\": 25.99,\r\n  \"type\": \"Perecedero\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n  \"id\": 3,\r\n  \"name\": \"New Product\",\r\n  \"price\": 25.99,\r\n  \"type\": \"Perecedero\",\r\n  \"stores\": []\r\n}\r\n"
+				}
+			]
+		},
+		{
+			"name": "Create an INVALID  new  product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"\",\r\n  \"price\": 25.99,\r\n  \"type\": \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/products",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create a new product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"\",\r\n  \"price\": 25.99,\r\n  \"type\": \"\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n  \"statusCode\": 400,\r\n  \"message\": \"Invalid product type\",\r\n  \"error\": \"Bad Request\"\r\n}\r\n"
+				}
+			]
+		},
+		{
+			"name": "Get a product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/{product_id}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{product_id}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a product",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/{product_id}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{product_id}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"id\": 1,\n  \"name\": \"Product A\",\n  \"price\": 19.99,\n  \"type\": \"Perecedero\",\n  \"stores\": [\n    {\n      \"id\": 1,\n      \"name\": \"Store X\",\n      \"city\": \"City A\",\n      \"address\": \"123 Main St\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Store Y\",\n      \"city\": \"City B\",\n      \"address\": \"456 Elm St\"\n    }\n  ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get an INVALID gastronomic culture",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/gastronomic_cultures/0000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"gastronomic_cultures",
+						"0000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a product",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/999",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"999"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": 404,\n  \"message\": \"Product with ID 999 not found\",\n  \"error\": \"Not Found\"\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Edit a product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Updated Product\",\r\n  \"price\": 30.99,\r\n  \"type\": \"No perecedero\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/products/{product_id}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{product_id}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Edit a product",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Updated Product\",\r\n  \"price\": 30.99,\r\n  \"type\": \"No perecedero\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/{product_id}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{product_id}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"id\": 1,\n  \"name\": \"Updated Product\",\n  \"price\": 30.99,\n  \"type\": \"No perecedero\",\n  \"stores\": [\n    {\n      \"id\": 1,\n      \"name\": \"Store X\",\n      \"city\": \"City A\",\n      \"address\": \"123 Main St\"\n    }\n  ]\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Edit an INVALID  product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Updated Product\",\r\n  \"price\": 30.99,\r\n  \"type\": \"No\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/products/999",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"999"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Edit a product",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Updated Product\",\r\n  \"price\": 30.99,\r\n  \"type\": \"No\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/999",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"999"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": 400,\n  \"message\": \"Invalid product type\",\n  \"error\": \"Bad Request\"\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Delete a product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/{product_id}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{product_id}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a product",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/{product_id}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{product_id}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Product with ID 1 deleted successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete an INVALID product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/0000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"0000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a product",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/999",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"999"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"statusCode\": 404,\n  \"message\": \"Product with ID 999 not found\",\n  \"error\": \"Not Found\"\n}\n"
+				}
+			]
+		}
+	]
+}
